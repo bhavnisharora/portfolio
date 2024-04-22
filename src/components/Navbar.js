@@ -34,31 +34,31 @@ const Navbar = () => {
       </nav>
       <nav className="flex items-center justify-center flex-wrap">
         <motion.a
-          href="/"
+          href="https://github.com/bhavnisharora/"
           target={"_blank"}
           className="w-6 mx-3"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaGithub />
+          <FaGithub className="h-8 w-8" />
         </motion.a>
         <motion.a
-          href="/"
+          href="https://www.linkedin.com/in/bhavnish-arora-b6398a198"
           target={"_blank"}
           className="w-6 mx-3"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaLinkedinIn />
+          <FaLinkedinIn className="h-8 w-8" />
         </motion.a>
         <motion.a
-          href="/"
+          href="https://www.instagram.com/bhaviarora786/?utm_medium=copy_link"
           target={"_blank"}
           className="w-6 ml-3"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <GrInstagram />
+          <GrInstagram className="h-8 w-8" />
         </motion.a>
       </nav>
 
