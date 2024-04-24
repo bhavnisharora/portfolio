@@ -8,6 +8,8 @@ import article1 from "../../public/images/articles/pagination component in react
 import article2 from "../../public/images/articles/loading.jpg";
 import { motion, motionValue } from "framer-motion";
 import article3 from "../../public/images/articles/modal.png";
+import article4 from "../../public/images/articles/validation.png";
+import article5 from "../../public/images/articles/smooth.png";
 
 const FramerImage = motion(Image);
 
@@ -17,11 +19,15 @@ const MovieImg = ({ title, img, link }) => {
   const imgRef = useRef(null);
 
   function handleMouse(event) {
-    console.log(event.pageX);
+    imgRef.current.style.display = "inline-block";
+    x.set(event.pageX);
+    y.set(-10);
   }
 
   function handleMouseLeave(event) {
-    console.log(event.pageX);
+    imgRef.current.style.display = "none";
+    x.set(0);
+    y.set(0);
   }
   return (
     <Link
@@ -33,11 +39,14 @@ const MovieImg = ({ title, img, link }) => {
       <h2 className="capitalize text-xl font-semibold hover:underline">
         {title}
       </h2>
-      <Image
+      <FramerImage
+        style={{ x: x, y: y }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { duration: 0.2 } }}
         ref={imgRef}
         src={img}
         alt={title}
-        className="w-96 h-auto hidden absolute rounded-lg"
+        className="z-10 w-96 h-auto hidden absolute rounded-lg"
       />
     </Link>
   );
@@ -45,14 +54,17 @@ const MovieImg = ({ title, img, link }) => {
 
 const Article = ({ img, title, date, link }) => {
   return (
-    <li
+    <motion.li
+      initial={{ y: 200 }}
+      whileInView={{ y: 0, transition: { duration: 0.5, ease: "easeInOut" } }}
+      viewport={{ once: true }}
       className="relative w-full p-4 py-6 my-6 rounded-xl flex items-center justify-between
     bg-light text-dark first:mt-0 border border-solid border-dark
     border-r-4 border-b-4"
     >
       <MovieImg title={title} img={img} link={link} />
       <span className="text-primary font-semibold pl-4">{date}</span>
-    </li>
+    </motion.li>
   );
 };
 
@@ -138,14 +150,14 @@ const articles = () => {
               title="Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling
 "
               date="March 22, 2023"
-              img={article3}
+              img={article4}
               link="/"
             />
             <Article
               title="Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling
 "
               date="March 22, 2023"
-              img={article3}
+              img={article5}
               link="/"
             />
             <Article
