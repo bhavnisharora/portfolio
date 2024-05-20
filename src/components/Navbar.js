@@ -5,6 +5,9 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { GrInstagram } from "react-icons/gr";
 import { motion } from "framer-motion";
+import useThemeSwitcher from "./hooks/useThemeSwicther";
+import { FaSun } from "react-icons/fa";
+import { IoMoon } from "react-icons/io5";
 const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
   console.log(router);
@@ -24,6 +27,7 @@ const CustomLink = ({ href, title, className = "" }) => {
   );
 };
 const Navbar = () => {
+  const [mode, setMode] = useThemeSwitcher();
   return (
     <header className="w-full px-32 py-8 font-medium flex items-center justify-between">
       <nav>
@@ -60,6 +64,16 @@ const Navbar = () => {
         >
           <GrInstagram className="h-8 w-8" />
         </motion.a>
+
+        <button onClick={() => setMode(mode === "light" ? "dark" : "light")}
+        className="ml-3 flex justify-center items-center rounded-full p-2 "
+        >
+          {mode == "dark" ? (
+            <FaSun className="fill-dark" />
+          ) : (
+            <IoMoon className="fill-dark" />
+          )}
+        </button>
       </nav>
 
       <div className="absolute left-[50%] top-2 translate-x-[-50%]">
