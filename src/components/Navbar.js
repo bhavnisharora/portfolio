@@ -5,11 +5,6 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { GrInstagram } from "react-icons/gr";
 import { motion } from "framer-motion";
-import useThemeSwitcher from "./hooks/useThemeSwitcher";
-import { FaSun } from "react-icons/fa";
-import { FaMoon } from "react-icons/fa";
-import { useState } from "react";
-
 const CustomLink = ({ href, title, className = "" }) => {
   const router = useRouter();
   console.log(router);
@@ -28,19 +23,12 @@ const CustomLink = ({ href, title, className = "" }) => {
   );
 };
 const Navbar = () => {
-  const [mode, setMode] = useThemeSwitcher();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  }
-
   return (
     <header
       className="w-full px-32 py-8 font-medium flex items-center justify-between
     dark:text-light"
     >
-      <button className="flex flex-col justify-center items-center" onClick={handleClick}>
+      <button className="flex flex-col justify-center items-center hidden lg:flex" onClick={handleClick}>
         <span className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${isOpen ? 'rotate-45 translate-y-1' :
           '-translate-y-0.5'
           }`}></span>
@@ -83,19 +71,6 @@ const Navbar = () => {
         >
           <GrInstagram className="h-8 w-8" />
         </motion.a>
-
-        <button
-          onClick={() => setMode(mode === "light" ? "dark" : "light")}
-          className={`ml-3 flex items-center justify-center rounded-full p-1
-            ${mode === "light" ? "" : "bg-light text-dark"}
-          `}
-        >
-          {mode === "dark" ? (
-            <FaSun className="fill-dark" />
-          ) : (
-            <FaMoon className="fill-dark" />
-          )}
-        </button>
       </nav>
 
       <div className="absolute left-[50%] top-2 translate-x-[-50%]">
